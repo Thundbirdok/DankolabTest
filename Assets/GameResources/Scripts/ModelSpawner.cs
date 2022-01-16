@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ModelSpawner : MonoBehaviour
@@ -24,21 +22,33 @@ public class ModelSpawner : MonoBehaviour
 
         if (model)
         {
-            Destroy(model);
+            model.SetActive(false);
+
+            model.transform.position = spawnPositionChecker.SpawnPosition;
+            model.transform.eulerAngles = GetModelEuler();
+
+            model.SetActive(true);
+
+            return;
         }
 
         model = Instantiate(prefab,
             spawnPositionChecker.SpawnPosition,
-            GetModelRotation(),
+            GetModelQuaternion(),
             parent);
     }
 
-    private Quaternion GetModelRotation()
+    private Quaternion GetModelQuaternion()
     {
-        var quaternion = new Quaternion();
+        Quaternion quaternion = new Quaternion();
 
-        quaternion.eulerAngles = new Vector3(0, (Camera.main.transform.eulerAngles.y + 180) % 360, 0);
+        quaternion.eulerAngles = GetModelEuler();
 
         return quaternion;
+    }
+
+    private Vector3 GetModelEuler()
+    {
+        return new Vector3(0, (Camera.main.transform.eulerAngles.y + 180) % 360, 0);
     }
 }
