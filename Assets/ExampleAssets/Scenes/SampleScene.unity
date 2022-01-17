@@ -360,7 +360,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPositionChecker: {fileID: 173547068}
-  prefab: {fileID: 7399178605320567781, guid: 778eb29f33f33e6478c01b11789f8c8f, type: 3}
+  prefab: {fileID: 1860400568087477723, guid: 778eb29f33f33e6478c01b11789f8c8f, type: 3}
   parent: {fileID: 1223056341}
 --- !u!4 &173547067
 Transform:
